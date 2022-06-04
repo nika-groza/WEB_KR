@@ -1,0 +1,85 @@
+/*Для загаловка задаем выравнивание по центру
+* и шрифт семейства Magneto*/
+h1 {
+    text-align: center;
+    font-family: Magneto;
+}
+/*Для основного блока */
+main {
+    display: flex; /*превращаем в флекс-контейнер (для более гибкой настройки)*/
+    align-items: center; /* выравниваем контейнер по центру */
+    justify-content: center; /* выравниваем элементы внутри флекс контейнера по центру*/
+}
+
+/* Облась отобрадения слайдов*/
+#slider {
+    /*Относительное позиционирование, сдвигаем слайды в центр*/
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*Задаем высоту и ширину слайдов*/
+    height: 500px;
+    width: 500px;
+}
+/*Расположение блока навигации "точки"*/
+#slider > div:not(.nav) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*Расположение элементов навигации "точки"*/
+#slider .nav.button {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/*Элементы панели навигации "точки"*/
+#slider .nav.button a {
+    height: 10px;
+    width: 10px;
+    background: gray;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 0 5px;
+    transition-property: width; /*Создаем эффект перехода с помощью ширины*/
+    transition-timing-function: ease-out;
+}
+/*Активный элемент на панели навигации "Точки"*/
+#slider .nav.button a.active {
+    width: 20px; /*Изменяем ширину*/
+}
+
+/*Слайды*/
+#slider > div .slider-slide {
+    height: 100%;
+    transition-property: opacity; /*Создаем эффект перехода с помощью прозрачности*/
+    transition-timing-function: ease-out; /*Анимируем свойство сначала быстро, к концу замедляем*/
+    opacity: 0; /*скрываем изображения*/
+    position: absolute; /*Элемент исчезает с позиционируемого места, и задаем новое местоположение*/
+    z-index: 0; /*Перемещаем на задний план*/
+}
+/*Активный (отображаемый) слайд*/
+#slider > div .slider-slide.active {
+    opacity: 1; /*убираем прозрачность*/
+}
+/*Задаем расположение кнопок "Назад" и "Вперед"*/
+#slider .nav.arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+/*Задаем размер отображаемой иконки для кнопки навигации*/
+#slider .nav.arrow img {
+    width: 25px;
+}
